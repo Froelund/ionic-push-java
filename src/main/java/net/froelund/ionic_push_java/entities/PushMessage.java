@@ -5,7 +5,22 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
- * Created by froelund on 12/16/15.
+ * A push message entity.
+ *
+ * Simple example:
+ *
+ * Will send a message to the Ionic users user:1, user:2, user:3.
+ * <pre>
+ * {@code
+ * PushMessage pushMessage = new PushMessage();
+ * pushMessage.setUserIds(new String[]{"user:1", "user:2", "user:3"});
+ * Notification notification = new Notification();
+ * notification.setAlert("Just testing!");
+ * pushMessage.setNotification(notification);
+ * //Send the pushMessage with PushSender
+ * }
+ * </pre>
+ *
  */
 @JsonPropertyOrder({
         "user_ids",

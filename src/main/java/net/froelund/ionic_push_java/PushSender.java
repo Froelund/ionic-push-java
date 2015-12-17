@@ -12,7 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by froelund on 12/16/15.
+ * Class for sending messages to Ionic Push.
+ *
  */
 public class PushSender {
 
@@ -24,6 +25,14 @@ public class PushSender {
     String privateApiKey;
     String ionicPushApiUrl;
 
+
+    /**
+     *
+     * Basic constructor for initiating the PushSender.
+     *
+     * @param ionicApplicationId Can be found by navigating to: https://apps.ionic.io/apps
+     * @param privateApiKey Can be found by navigating to: https://apps.ionic.io/app/<ionicApplicationId></>/config/keys
+     */
     public PushSender(String ionicApplicationId, String privateApiKey) {
         this(ionicApplicationId, privateApiKey, "https://push.ionic.io/");
     }
@@ -34,6 +43,13 @@ public class PushSender {
         this.ionicPushApiUrl = ionicPushApiUrl;
     }
 
+    /**
+     *
+     * Sends a push message.
+     *
+     * @param pushMessage
+     * @return The Http response returned by the Ionic Push.
+     */
     public Response sendPush(PushMessage pushMessage){
         ResteasyWebTarget ionicPushApiTarget = client.target(ionicPushApiUrl);
 
